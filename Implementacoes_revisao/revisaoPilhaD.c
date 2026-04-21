@@ -104,4 +104,5 @@ int main(){
     printf("O topo da pilha eh: %d", qualTopo(&p1));
 
     destruirPilha(&p1);
+    return 0;
 }
