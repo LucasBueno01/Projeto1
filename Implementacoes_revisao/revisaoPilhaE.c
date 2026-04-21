@@ -68,4 +68,5 @@ int main(){
     printPilhaE(&p1);
     printf("\ndesempilhando: %d", desempilhar(&p1));
     printPilhaE(&p1);
+    return 0;
 }
