@@ -108,73 +108,129 @@ void destruirLista2(Lista * l){
     l->qtdeItens = 0;
 }
 
+void comparar(Lista * l1, Lista * l2){
+    ptrNoLista aux = l1->inicio;
+    int cont1 = 0, cont2 = 0;
+    while(aux != NULL){
+        aux = aux->prox;
+        cont1++;
+    }
+    aux = l2->inicio;
+    while(aux != NULL){
+        aux = aux->prox;
+        cont2++;
+    }
+    if(cont1 == cont2){
+        printf("Listas tem o mesmo tamanho");
+    } else if(cont1 > cont2){
+        printf("\n\nA lista 1 é maior que a lista 2!");
+    } else{
+        printf("Lista 2 é maior que a lista 1");
+    }
+    return;
+}
+
 int main(){
-     Lista l;
+   Lista l1, l2;
 
-    inicializarLista(&l);
+    inicializarLista(&l1);
+    inicializarLista(&l2);
 
-    printf("\n===== TESTE LISTA ORDENADA =====\n");
+    printf("\n======================================");
+    printf("\n      TESTE COMPLETO DAS LISTAS");
+    printf("\n======================================\n");
 
-    // Lista vazia
-    imprimirLista(&l);
+    /* Estado inicial */
+    printf("\n[1] Estado inicial das listas:");
+    imprimirLista(&l1);
+    imprimirLista(&l2);
 
-    // Inserções
-    printf("\n\nInserindo 30...");
-    inserirNaLista(&l, 30);
+    printf("\n\nComparando listas vazias:");
+    comparar(&l1, &l2);
 
-    printf("\nInserindo 10...");
-    inserirNaLista(&l, 10);
+    /* Inserções Lista 1 */
+    printf("\n\n[2] Inserindo elementos na Lista 1:");
+    printf("\nInserindo: 30, 10, 50, 20, 40");
 
-    printf("\nInserindo 50...");
-    inserirNaLista(&l, 50);
+    inserirNaLista(&l1, 30);
+    inserirNaLista(&l1, 10);
+    inserirNaLista(&l1, 50);
+    inserirNaLista(&l1, 20);
+    inserirNaLista(&l1, 40);
 
-    printf("\nInserindo 20...");
-    inserirNaLista(&l, 20);
+    imprimirLista(&l1);
+    printf("\nQuantidade Lista 1: %d", tamanhoLista(&l1));
 
-    printf("\nInserindo 40...");
-    inserirNaLista(&l, 40);
+    /* Inserções Lista 2 */
+    printf("\n\n[3] Inserindo elementos na Lista 2:");
+    printf("\nInserindo: 15, 5, 35");
 
-    imprimirLista(&l);
+    inserirNaLista(&l2, 15);
+    inserirNaLista(&l2, 5);
+    inserirNaLista(&l2, 35);
 
-    // Tamanho
-    printf("\n\nQuantidade de itens: %d", tamanhoLista(&l));
+    imprimirLista(&l2);
+    printf("\nQuantidade Lista 2: %d", tamanhoLista(&l2));
 
-    // Remover início
-    printf("\n\nRemovendo 10...");
-    removerLista(&l, 10);
-    imprimirLista(&l);
+    /* Primeira comparação */
+    printf("\n\n[4] Comparando listas:");
+    comparar(&l1, &l2);
 
-    // Remover meio
-    printf("\n\nRemovendo 30...");
-    removerLista(&l, 30);
-    imprimirLista(&l);
+    /* Remoções Lista 1 */
+    printf("\n\n[5] Removendo elementos da Lista 1:");
+    printf("\nRemover inicio (10)");
+    removerLista(&l1, 10);
+    imprimirLista(&l1);
 
-    // Remover final
-    printf("\n\nRemovendo 50...");
-    removerLista(&l, 50);
-    imprimirLista(&l);
+    printf("\n\nRemover meio (30)");
+    removerLista(&l1, 30);
+    imprimirLista(&l1);
 
-    // Valor inexistente
-    printf("\n\nTentando remover 99...");
-    removerLista(&l, 99);
-    imprimirLista(&l);
+    printf("\n\nRemover final (50)");
+    removerLista(&l1, 50);
+    imprimirLista(&l1);
 
-    // Inserir novos valores
-    printf("\n\nInserindo 15...");
-    inserirNaLista(&l, 15);
+    printf("\nQuantidade Lista 1: %d", tamanhoLista(&l1));
 
-    printf("\nInserindo 35...");
-    inserirNaLista(&l, 35);
+    /* Inserções extras Lista 2 */
+    printf("\n\n[6] Inserindo mais elementos na Lista 2:");
+    printf("\nInserindo: 25, 45, 55");
 
-    imprimirLista(&l);
+    inserirNaLista(&l2, 25);
+    inserirNaLista(&l2, 45);
+    inserirNaLista(&l2, 55);
 
-    // Destruir lista
-    printf("\n\nDestruindo lista...");
-    destruirLista2(&l);
+    imprimirLista(&l2);
+    printf("\nQuantidade Lista 2: %d", tamanhoLista(&l2));
 
-    imprimirLista(&l);
+    /* Segunda comparação */
+    printf("\n\n[7] Comparando novamente:");
+    comparar(&l1, &l2);
 
-    printf("\n\nFim do programa.\n");
+    /* Teste valor inexistente */
+    printf("\n\n[8] Tentando remover valor inexistente (999) da Lista 1:");
+    removerLista(&l1, 999);
+
+    /* Estado final */
+    printf("\n\n[9] Estado final das listas:");
+    printf("\nLista 1:");
+    imprimirLista(&l1);
+
+    printf("\nLista 2:");
+    imprimirLista(&l2);
+
+    /* Destruição */
+    printf("\n\n[10] Destruindo listas...");
+    destruirLista2(&l1);
+    destruirLista2(&l2);
+
+    printf("\n\nListas apos destruir:");
+    imprimirLista(&l1);
+    imprimirLista(&l2);
+
+    printf("\n\n======================================");
+    printf("\n         FIM DOS TESTES");
+    printf("\n======================================\n");
 
     return 0;
 }
