@@ -123,11 +123,22 @@ void comparar(Lista * l1, Lista * l2){
     if(cont1 == cont2){
         printf("Listas tem o mesmo tamanho");
     } else if(cont1 > cont2){
-        printf("\n\nA lista 1 é maior que a lista 2!");
+        printf("\n\nA lista 1 eh maior que a lista 2!");
     } else{
-        printf("Lista 2 é maior que a lista 1");
+        printf("\n\nLista 2 eh maior que a lista 1");
     }
     return;
+}
+
+bool compararListas(Lista * l1, Lista * l2){
+    ptrNoLista aux1 = l1->inicio;
+    ptrNoLista aux2 = l2->inicio;
+
+    while(aux1 != NULL && aux2 != NULL){
+        aux1 = aux1->prox;
+        aux2 = aux2->prox;
+    }
+    return(aux1 != NULL && aux2 == NULL);
 }
 
 int main(){
