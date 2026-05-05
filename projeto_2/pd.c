@@ -6,7 +6,6 @@ typedef struct{
     int valor;
 }Prato;
 
-
 typedef struct NoPilha{
     struct NoPilha * prox;
     Prato prato;
